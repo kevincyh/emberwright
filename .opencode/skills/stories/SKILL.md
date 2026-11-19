@@ -53,7 +53,7 @@ gh issue list --state all --search "EW-COMBAT-001 in:body" --json number --jq 'l
   `gh issue create --title "[Story] Three-hit combo" --body-file <tmp> --label "type:story,status:backlog,difficulty:low,area:combat,agent:gemma" --milestone "P1 Prototype"`
 - If the result is `1` or more, skip it, or update it with `gh issue edit` only if the human asked.
 - The body uses the `.github/ISSUE_TEMPLATE/user-story.yml` field headings, including `### Story ID`.
-- Add the issue to the project board: `gh project item-add <project-number> --owner @me --url <issue-url>`.
+- Add the issue to the project board: `gh project item-add 1 --owner kevincyh --url <issue-url>` (board: https://github.com/users/kevincyh/projects/1).
 
 When the human says which stories are ready, relabel them from `status:backlog` to `status:ready`.
 
