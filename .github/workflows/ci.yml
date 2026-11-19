@@ -18,7 +18,7 @@ jobs:
     name: Core tests (dotnet)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
@@ -39,7 +39,7 @@ jobs:
     outputs:
       unity: ${{ steps.check.outputs.unity }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: check
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -62,7 +62,7 @@ jobs:
       matrix:
         testMode: [editmode, playmode]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: true
       - uses: actions/cache@v4
