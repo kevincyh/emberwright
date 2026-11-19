@@ -1,6 +1,6 @@
 # Emberwright: rules for every agent
 
-Emberwright is an original online sword action RPG. It uses Unity 6 for Android and iOS, with a server-authoritative Netcode for GameObjects (NGO) server.
+Emberwright is an original sword action RPG for Android and iOS, built with Unity 6. It is single-player first, with local co-op where one phone hosts and others join over Wi-Fi or a hotspot (NGO, host-authoritative).
 
 ## Your job
 
@@ -14,7 +14,7 @@ Emberwright is an original online sword action RPG. It uses Unity 6 for Android 
 
 1. Game rules live in `Assets/_Game/Scripts/Core/` (`Emberwright.Core`). Core code never uses `UnityEngine`.
 2. Behaviours (`MonoBehaviour`, `NetworkBehaviour`) only read input, call Core and apply the result.
-3. Clients send intent only, with `[Rpc(SendTo.Server)]`. The server computes damage, loot, XP and currency.
+3. Clients send intent only, with `[Rpc(SendTo.Server)]` (in NGO, the host is the server). The host computes damage, loot and XP. Each device applies a reward to its own save once, by `rewardId`.
 4. Inject randomness (`IRandom`) and time into Core. Never call `UnityEngine.Random`, `Time.time` or `DateTime.Now` in Core.
 5. Use C# 9 and netstandard2.1 APIs only.
 6. Tests use NUnit 3 syntax: `Assert.That(actual, Is.EqualTo(expected))`.
@@ -53,7 +53,8 @@ Emberwright is an original online sword action RPG. It uses Unity 6 for Android 
 | `emberwright-tdd` | Every ticket |
 | `unity-csharp-conventions` | Writing any C# |
 | `core-dotnet-tests` | Writing Core tests |
-| `ngo-server-authority` | Touching `Net/`, `Server/` or anything multiplayer |
+| `ngo-host-authority` | Touching `Net/`, `Host/` or anything multiplayer |
+| `local-save` | Save format, loading, migrations, rewards |
 | `unity-test-framework` | Writing EditMode or PlayMode tests |
 | `debug-playbook` | A bug or an unexpected test failure |
 | `escalation-policy` | Before `/escalate`, or on `difficulty: high` |
@@ -69,7 +70,7 @@ Emberwright is an original online sword action RPG. It uses Unity 6 for Android 
 
 | Path | What |
 |---|---|
-| `Assets/_Game/Scripts/{Core,Data,Net,Server,Client}` | Assemblies, from lowest to highest layer |
+| `Assets/_Game/Scripts/{Core,Data,Net,Host,Client}` | Assemblies, from lowest to highest layer |
 | `Tests/Emberwright.Core.Tests` | Fast NUnit tests for Core |
 | `Assets/Tests/{EditMode,PlayMode}` | Unity tests |
 | `docs/ARCHITECTURE.md` | How it fits together |

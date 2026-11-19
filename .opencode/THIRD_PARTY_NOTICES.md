@@ -6,7 +6,7 @@ Parts of the skills in `.opencode/skills/` are adapted from the projects below. 
 
 - Source: https://github.com/backnotprop/pstack (a mirror of Cursor's `pstack` plugin by Lauren Tan, also known as poteto)
 - Commit reviewed: `0d2dc00df47d7686c94324cfe9c3444710d9f16d`
-- Used in: `emberwright-tdd`, `unity-csharp-conventions`, `ngo-server-authority`, `escalation-policy`, `teach-gemma`, `task-slicing`, `emberwright-verify`, `debug-playbook`, `docs-writing`, and the simplicity rules in `AGENTS.md`
+- Used in: `emberwright-tdd`, `unity-csharp-conventions`, `ngo-host-authority`, `escalation-policy`, `teach-gemma`, `task-slicing`, `emberwright-verify`, `debug-playbook`, `docs-writing`, and the simplicity rules in `AGENTS.md`
 - Not used: the autonomy rules that proceed without asking, `autopilot-*`, `shipping`, `setup-pstack`, `make-bot-ui`, `automate-me`, and the TypeScript-specific skills
 
 ```

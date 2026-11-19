@@ -55,16 +55,21 @@ Enter zone → fight enemies → earn XP, gold and materials → find or forge s
 - Hub NPCs: TODO (for example smith, quest giver, merchant)
 - Daily or repeatable quests: TODO
 
-### Multiplayer
-- Shared zones: up to N players (TODO)
-- Party size for bosses: TODO
-- Trading between players: TODO (yes or no). Trading adds fraud risk; consider it after launch.
+### Multiplayer (local co-op; see docs/adr/0006-offline-first-local-coop.md)
+- The game is single-player first. Friends can join by connecting devices: same Wi-Fi, or the host's hotspot.
+- Players per session: 2–4 (TODO: confirm the maximum)
+- Whose world: the host's world and story progress. Each player keeps their own XP and loot on their own device. (TODO: confirm)
+- Drop-in and drop-out in the middle of a zone: TODO (yes, or only in the hub?)
+- Do enemies scale with the player count? TODO
+- How is loot shared? TODO (everyone gets their own drops, or the first to pick it up?)
+- Trading between players: TODO. This is risky without a server, so the recommendation is no.
 - PvP: TODO
+- Remote co-op with a join code over the internet: after launch, optional
 
 ### Economy
-- Currencies: TODO (for example gold, which is earned, and gems, which are premium)
+- Currencies: TODO (for example gold, which is earned in the game)
 - Sinks: upgrades, repairs, shop (TODO)
-- Monetization: TODO (cosmetics only, a battle pass, ads?)
+- Monetization: TODO. Without a server, a premium currency can't be protected. Options: a paid game, a one-off "full game" unlock, cosmetic purchases with store receipt validation, or none.
 
 ## Out of scope for launch
 

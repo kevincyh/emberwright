@@ -23,10 +23,12 @@ These rules apply to every contributor, human or agent. Where a tool can enforce
 
 ## Networking
 
-- Clients send intent RPCs only (`[Rpc(SendTo.Server)]`). The server validates and computes.
-- `NetworkVariable`s are written only by the server, which is the default write permission. Never change that default for gameplay values.
-- Never trust a client value for damage, position jumps, cooldowns, currency or inventory.
-- Grants (XP, loot, currency) go through one server path that takes a request ID, so a retry cannot grant twice.
+- The host is authoritative for the shared world. In NGO, the host *is* the server, so the attribute is still `[Rpc(SendTo.Server)]`.
+- Clients send intent RPCs only. The host validates and computes.
+- `NetworkVariable`s are written only by the host, which is the default write permission. Never change that default for gameplay values.
+- Never trust a client value for damage, position jumps or cooldowns.
+- Rewards (XP, loot, currency) carry a `rewardId`. Each device applies a reward to its own save once, so a repeated message cannot grant twice.
+- Save file I/O lives in `Emberwright.Host`. The save model and migrations live in Core.
 
 ## Simplicity
 

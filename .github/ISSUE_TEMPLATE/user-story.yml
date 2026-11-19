@@ -53,7 +53,7 @@ body:
     id: skills
     attributes:
       label: Skills and lessons to load
-      description: For example emberwright-tdd, ngo-server-authority, lesson 004.
+      description: For example emberwright-tdd, ngo-host-authority, lesson 004.
   - type: textarea
     id: deps
     attributes:

@@ -1,6 +1,6 @@
 # ADR 0003: Unity Gaming Services as the backend
 
-- Status: accepted
+- Status: superseded by [0006](0006-offline-first-local-coop.md) on 2026-11-20
 - Date: 2026-11-19
 
 ## Context

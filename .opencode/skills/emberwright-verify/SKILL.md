@@ -14,14 +14,14 @@ dotnet test Tests/Emberwright.Core.sln
 git diff --stat main...HEAD
 ```
 
-If Unity is installed and `Net`, `Server`, `Client` or `Data` changed, also run the Unity tests (see the `unity-test-framework` skill).
+If Unity is installed and `Net`, `Host`, `Client` or `Data` changed, also run the Unity tests (see the `unity-test-framework` skill).
 
 ## 2. Checklist
 
 - [ ] Each acceptance criterion in the issue has a named test, and the test passes.
 - [ ] Only files in the ticket's scope changed, or the PR explains why.
 - [ ] Game rules are in Core. Behaviours only call Core.
-- [ ] No client-trusted values. Grants take a request ID.
+- [ ] No client-trusted values. Rewards carry a `rewardId` and apply once. Save writes are atomic.
 - [ ] No `UnityEngine`, `DateTime.Now` or unseeded random in Core.
 - [ ] No new interface with one implementation, no dead code, no duplicate helper.
 - [ ] Docs, the lesson index and the usage log are updated if needed.

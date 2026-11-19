@@ -187,7 +187,7 @@
     },
     {
       "action": "skill",
-      "resource": "ngo-server-authority",
+      "resource": "ngo-host-authority",
       "effect": "allow"
     },
     {
@@ -223,6 +223,11 @@
     {
       "action": "skill",
       "resource": "unity-test-framework",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "local-save",
       "effect": "allow"
     }
   ],

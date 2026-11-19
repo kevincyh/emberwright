@@ -38,14 +38,29 @@ dotnet test Tests/Emberwright.Core.sln --collect:"XPlat Code Coverage"
 
 ## Netcode tests
 
-Use `NetcodeIntegrationTest` from `Unity.Netcode.TestHelpers.Runtime`. Spin up one server and N clients in a PlayMode test. Every authority rule needs a test that tries the cheat from a client and asserts that the server ignores it.
+Use `NetcodeIntegrationTest` from `Unity.Netcode.TestHelpers.Runtime`. Spin up one host and N clients (N = 1–3) in a PlayMode test. Every authority rule needs a test that tries the cheat from a client and asserts that the host ignores it.
+
+## Save tests
+
+Save logic is in Core, so it is tested with `dotnet test`:
+- round trip (save, then load gives the same data)
+- each migration step (`v1 → v2` and so on)
+- a bad checksum falls back to the backup
+- applying the same `rewardId` twice changes nothing
+
+## Co-op on real devices
+
+Before each co-op release, test by hand:
+- Android hosts and iOS joins on the same Wi-Fi.
+- iOS hosts and Android joins over the host's hotspot.
+- Joining by manual IP when discovery is blocked.
 
 ## Coverage targets
 
 | Area | Target |
 |---|---|
 | `Emberwright.Core` | ≥ 80% lines |
-| Net, Client, Server | Covered by integration and E2E tests; no number |
+| Net, Client, Host | Covered by integration and E2E tests; no number |
 
 ## End-to-end tests (AltTester)
 

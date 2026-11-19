@@ -6,9 +6,9 @@ description: Quality review of a change - correct, safe, holds under load, teste
 
 Ported from Ponytail's `ponytail-review` skill (MIT, Dietrich Gebert, v5.3.3). Changes for Emberwright: a precedence rule, the expected load, and a C# example.
 
-**Precedence:** tests, server authority and the docs/ARCHITECTURE.md rules always win over "lean". Never propose deleting a test, a server-side validation or an idempotency key to save lines.
+**Precedence:** tests, host authority and the docs/ARCHITECTURE.md rules always win over "lean". Never propose deleting a test, a host-side validation or a `rewardId` check to save lines.
 
-**Expected load:** an online game. Many clients send RPCs to one dedicated server at 30 ticks per second. Treat the client as untrusted.
+**Expected load:** local co-op. 1–3 clients send RPCs to a host phone at 30 ticks per second, and the host is also rendering the game, so its CPU and allocations matter. Treat clients as untrusted.
 
 Review like the senior developer who will be paged when it breaks. Order of importance: correct, safe, holds under load, tested, fast, lean.
 
@@ -21,7 +21,7 @@ Review like the senior developer who will be paged when it breaks. Order of impo
 ## 2. Look for (in this order)
 
 1. **Bug:** wrong result, crash, missed edge case (empty, zero, last item, rounding), a caller broken by the change.
-2. **Risk:** client-trusted values, missing RPC validation, a grant without a request ID, swallowed errors.
+2. **Risk:** client-trusted values, missing RPC validation, a reward without a `rewardId`, a save write that is not atomic, swallowed errors.
 3. **Scale:** a check-then-write race, per-tick allocations, lists that only grow, O(n²) over all players or entities.
 4. **Missing test:** risky new logic (a branch, money, loot, authority, a bug fix) with no test that fails when it breaks.
 5. **Speed:** big slowdowns are problems. Small wins in hot paths (`Update`, the tick loop) are suggestions.
@@ -49,7 +49,7 @@ Each finding is a bold title with `file:lines`, then four bullets, each 1 or 2 s
 1. **Damage trusted from client** (`Assets/_Game/Scripts/Net/PlayerCombat.cs:L22-30`)
    - **What this is:** The attack RPC applies the damage value that the client sends.
    - **Problem:** A modified client can send 99999 and kill a boss in one hit.
-   - **Fix:** Send only `targetId`, and compute the damage on the server with `CombatRules.Resolve`.
+   - **Fix:** Send only `targetId`, and compute the damage on the host with `CombatRules.Resolve`.
    - **If we skip it:** Anyone can cheat, and loot loses its value.
 
 End with:

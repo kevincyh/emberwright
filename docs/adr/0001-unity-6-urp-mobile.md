@@ -10,6 +10,6 @@ Emberwright targets Android and iOS from one codebase, with 3D low-poly art and 
 Use Unity 6 LTS with the Universal Render Pipeline's mobile renderer and the Input System package.
 
 ## Consequences
-- One C# codebase for the client and the dedicated server.
+- One C# codebase for every device. Since ADR 0006, any phone can also be the co-op host.
 - GameCI supports headless builds and tests in GitHub Actions.
 - CI needs a Unity license secret.

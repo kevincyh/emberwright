@@ -13,7 +13,7 @@ Full rules: docs/CODING_STANDARDS.md. This is the short version.
 | Emberwright.Core | Assets/_Game/Scripts/Core | `System.*` only. No `UnityEngine`. |
 | Emberwright.Data | Assets/_Game/Scripts/Data | Core, `UnityEngine` (ScriptableObject) |
 | Emberwright.Net | Assets/_Game/Scripts/Net | Core, Data, `Unity.Netcode` |
-| Emberwright.Server | Assets/_Game/Scripts/Server | Core, Data, Net |
+| Emberwright.Host | Assets/_Game/Scripts/Host | Core, Data, Net (session, discovery, save I/O) |
 | Emberwright.Client | Assets/_Game/Scripts/Client | Core, Data, Net, Input System |
 
 ## Language
