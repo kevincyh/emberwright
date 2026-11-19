@@ -81,7 +81,7 @@ jobs:
         with:
           targetPlatform: StandaloneLinux64
           customParameters: -standaloneBuildSubtarget Server
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
