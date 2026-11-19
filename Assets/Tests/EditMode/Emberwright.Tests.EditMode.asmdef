@@ -1,0 +1,22 @@
+{
+    "name": "Emberwright.Tests.EditMode",
+    "rootNamespace": "Emberwright.Tests.EditMode",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Emberwright.Core",
+        "Emberwright.Data",
+        "Emberwright.Net",
+        "Unity.Netcode.Runtime",
+        "Unity.Netcode.TestHelpers.Runtime"
+    ],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": ["nunit.framework.dll"],
+    "autoReferenced": false,
+    "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

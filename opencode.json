@@ -1,0 +1,238 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "mlx/gemma4",
+  "small_model": "mlx/gemma4",
+  "default_agent": "build",
+  "providers": {
+    "mlx": {
+      "name": "Local MLX",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "gemma4": {
+          "name": "Gemma 4 · MLX",
+          "modelID": "default_model",
+          "capabilities": {
+            "tools": true,
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 65536,
+            "output": 8192
+          },
+          "body": {
+            "temperature": 0.2
+          }
+        }
+      }
+    }
+  },
+  "permissions": [
+    {
+      "action": "read",
+      "resource": "*.keystore",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "*.jks",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "*.p8",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "*.p12",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "*.mobileprovision",
+      "effect": "deny"
+    },
+    {
+      "action": "read",
+      "resource": "*google-play-service-account*",
+      "effect": "deny"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git push --force*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git push -f*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git push origin main*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git reset --hard*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git clean *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "rm -rf *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh pr merge *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "gh repo delete *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "gh secret *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "gh release *",
+      "effect": "ask"
+    },
+    {
+      "action": "subagent",
+      "resource": "delegator",
+      "effect": "ask"
+    },
+    {
+      "action": "subagent",
+      "resource": "delegator-pro",
+      "effect": "ask"
+    },
+    {
+      "action": "skill",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "skill",
+      "resource": "core-dotnet-tests",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "debug-playbook",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "docs-writing",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "emberwright-tdd",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "emberwright-verify",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "escalation-policy",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "gameci-workflows",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "impressions",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "issue-workflow",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "ngo-server-authority",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "ponytail-review",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "project-lessons",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "stories",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "task-slicing",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "teach-gemma",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "unity-csharp-conventions",
+      "effect": "allow"
+    },
+    {
+      "action": "skill",
+      "resource": "unity-test-framework",
+      "effect": "allow"
+    }
+  ],
+  "agents": {
+    "build": {
+      "model": "mlx/gemma4",
+      "description": "Emberwright builder (Gemma 4). Implements one ticket at a time; follows AGENTS.md."
+    },
+    "plan": {
+      "model": "mlx/gemma4"
+    }
+  }
+}

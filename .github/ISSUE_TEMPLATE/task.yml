@@ -1,0 +1,39 @@
+name: Task
+description: A technical slice of a story, sized for one Gemma session.
+title: "[Task] "
+labels: ["type:task", "status:backlog"]
+body:
+  - type: input
+    id: parent
+    attributes:
+      label: Parent story
+      description: "#<issue number>"
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance tests
+      value: |
+        - [ ] Test `Class_Condition_Result` proves ...
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options: [low, medium, high]
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Files in scope
+  - type: textarea
+    id: skills
+    attributes:
+      label: Skills and lessons to load

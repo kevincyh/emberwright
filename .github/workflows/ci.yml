@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    name: Core tests (dotnet)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Format check
+        run: dotnet format Tests/Emberwright.Core.sln --verify-no-changes
+      - name: Test
+        run: dotnet test Tests/Emberwright.Core.sln --collect:"XPlat Code Coverage" --results-directory TestResults
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: core-test-results
+          path: TestResults
+          if-no-files-found: ignore
+
+  detect:
+    name: Detect Unity project
+    runs-on: ubuntu-latest
+    outputs:
+      unity: ${{ steps.check.outputs.unity }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        # Unity jobs run only once the Unity project exists and the license secret is set.
+        run: |
+          if [ -f ProjectSettings/ProjectVersion.txt ] && [ -n "$UNITY_LICENSE" ]; then
+            echo "unity=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "unity=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Unity tests skipped (no ProjectSettings/ProjectVersion.txt or no UNITY_LICENSE secret)."
+          fi
+
+  unity-tests:
+    name: Unity ${{ matrix.testMode }} tests
+    needs: detect
+    if: needs.detect.outputs.unity == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode: [editmode, playmode]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-test-${{ hashFiles('Packages/packages-lock.json', 'ProjectSettings/ProjectVersion.txt') }}
+          restore-keys: Library-test-
+      - uses: game-ci/unity-test-runner@v4
+        id: tests
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          testMode: ${{ matrix.testMode }}
+          coverageOptions: generateAdditionalMetrics;generateHtmlReport;assemblyFilters:+Emberwright.*
+          artifactsPath: TestResults/${{ matrix.testMode }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unity-${{ matrix.testMode }}-results
+          path: |
+            ${{ steps.tests.outputs.artifactsPath }}
+            ${{ steps.tests.outputs.coveragePath }}
+          if-no-files-found: ignore

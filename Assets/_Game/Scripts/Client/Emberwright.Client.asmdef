@@ -1,0 +1,14 @@
+{
+    "name": "Emberwright.Client",
+    "rootNamespace": "Emberwright.Client",
+    "references": ["Emberwright.Core","Emberwright.Data","Emberwright.Net","Unity.InputSystem"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

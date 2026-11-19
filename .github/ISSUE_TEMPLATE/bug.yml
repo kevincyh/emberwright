@@ -1,0 +1,34 @@
+name: Bug
+description: Something does not work as designed.
+title: "[Bug] "
+labels: ["type:bug", "status:backlog"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+    validations:
+      required: true
+  - type: input
+    id: build
+    attributes:
+      label: Build, device and OS
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty (best guess)
+      options: [low, medium, high]
