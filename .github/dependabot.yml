@@ -8,3 +8,7 @@ updates:
     directory: /Tests
     schedule:
       interval: weekly
+    ignore:
+      # Unity Test Framework ships NUnit 3; Core tests must stay portable into Unity.
+      - dependency-name: NUnit
+        update-types: ["version-update:semver-major"]
