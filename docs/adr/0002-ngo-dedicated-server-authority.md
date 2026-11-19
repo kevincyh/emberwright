@@ -1,6 +1,6 @@
 # ADR 0002: Netcode for GameObjects with a server-authoritative dedicated server
 
-- Status: accepted
+- Status: superseded by [0006](0006-offline-first-local-coop.md) on 2026-11-20
 - Date: 2026-11-19
 
 ## Context

@@ -7,8 +7,8 @@ All pipelines run on GitHub Actions. Unity jobs use [GameCI](https://game.ci).
 | Workflow | Trigger | What it does | Active when |
 |---|---|---|---|
 | `ci.yml` | Every PR, push to `main` | `dotnet format` check and Core tests with coverage. Unity EditMode and PlayMode tests with coverage. | Core: always. Unity: once `ProjectSettings/ProjectVersion.txt` exists and `UNITY_LICENSE` is set. |
-| `build.yml` | Push to `main`, manual | Builds the Android AAB, the iOS Xcode project and the Linux dedicated server. Uploads them as artifacts for 14 days. | Same as the Unity jobs in CI |
-| `release.yml` | Tag `v*`, manual | Android → Play internal track. iOS → TestFlight (macOS runner). Server image → GHCR. | Repository variable `RELEASE_ENABLED=true` |
+| `build.yml` | Push to `main`, manual | Builds the Android AAB and the iOS Xcode project. Uploads them as artifacts for 14 days. | Same as the Unity jobs in CI |
+| `release.yml` | Tag `v*`, manual | Android → Play internal track. iOS → TestFlight (macOS runner). | Repository variable `RELEASE_ENABLED=true` |
 | `e2e.yml` | Nightly, manual | AltTester suite on an Android emulator, plus the performance tests | Repository variable `E2E_ENABLED=true` |
 
 Dependabot updates the Actions and NuGet versions weekly.
@@ -44,7 +44,6 @@ Add these in **Settings → Secrets and variables → Actions**. Never commit th
 | Item | Phase |
 |---|---|
 | `fastlane/Fastfile` with the `android internal` and `ios beta` lanes, plus a `Gemfile` | 7 |
-| `server/Dockerfile` for the headless server | 2 |
 | `Emberwright.Editor.E2EBuild.BuildAndroidWithAltTester` and `Tests/E2E/run-android.sh` | 2 |
 
 Each item is a ticket on the board.

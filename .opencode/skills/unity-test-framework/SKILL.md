@@ -45,10 +45,10 @@ public class AttackAuthorityTests : NetcodeIntegrationTest
     [UnityTest]
     public IEnumerator ClientCannotWriteEnemyHealth()
     {
-        // spawn an enemy on the server, try to change its health from a client,
-        // then assert that the server value is unchanged
-        yield return WaitForConditionOrTimeOut(() => /* server observed the RPC */ true);
-        Assert.That(/* server-side health */ 100, Is.EqualTo(100));
+        // spawn an enemy on the host, try to change its health from a client,
+        // then assert that the host value is unchanged
+        yield return WaitForConditionOrTimeOut(() => /* host observed the RPC */ true);
+        Assert.That(/* host-side health */ 100, Is.EqualTo(100));
     }
 }
 ```

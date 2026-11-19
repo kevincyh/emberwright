@@ -1,6 +1,6 @@
 {
-    "name": "Emberwright.Server",
-    "rootNamespace": "Emberwright.Server",
+    "name": "Emberwright.Host",
+    "rootNamespace": "Emberwright.Host",
     "references": ["Emberwright.Core","Emberwright.Data","Emberwright.Net","Unity.Netcode.Runtime"],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -9,8 +9,8 @@ Reference: docs/CI_CD.md.
 | File | Jobs |
 |---|---|
 | `ci.yml` | `core` (dotnet format + test), `detect`, `unity-tests` (EditMode and PlayMode matrix) |
-| `build.yml` | `detect`, `build` (Android AAB, iOS, Linux server matrix) |
-| `release.yml` | Gated by `vars.RELEASE_ENABLED`. Store uploads through fastlane, and the server image goes to GHCR. |
+| `build.yml` | `detect`, `build` (Android AAB and iOS matrix) |
+| `release.yml` | Gated by `vars.RELEASE_ENABLED`. Store uploads through fastlane. |
 | `e2e.yml` | Gated by `vars.E2E_ENABLED`. AltTester on an Android emulator, and performance tests. |
 
 ## Rules

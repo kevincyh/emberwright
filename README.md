@@ -1,8 +1,8 @@
 # Emberwright
 
-Emberwright is an original online multiplayer sword action RPG for Android and iOS, built with Unity 6.
+Emberwright is an original sword action RPG for Android and iOS, built with Unity 6. It plays offline as a single-player game, and 2–4 friends can join in local co-op by connecting their phones over the same Wi-Fi or a hotspot.
 
-Players collect and upgrade swords, level up, fight through zones and bosses with friends, and take on quests from NPCs. The world, names and art are original to Emberwright.
+Players collect and upgrade swords, level up, fight through zones and bosses with friends, and take on quests from NPCs, alone or together. The world, names and art are original to Emberwright.
 
 > Status: **pre-production**. The repo holds the architecture, docs, CI/CD and the AI-agent setup. Feature work starts from the GitHub Issues board.
 

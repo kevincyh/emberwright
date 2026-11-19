@@ -45,9 +45,6 @@ jobs:
           - name: iOS (Xcode project)
             targetPlatform: iOS
             customParameters: ""
-          - name: Linux dedicated server
-            targetPlatform: StandaloneLinux64
-            customParameters: -standaloneBuildSubtarget Server
     steps:
       - uses: actions/checkout@v4
         with:

@@ -7,9 +7,9 @@ Read [AGENTS.md](AGENTS.md) for the rules that every agent follows.
 ## When asked to review a PR or diff
 
 1. Read the linked issue and its acceptance criteria.
-2. Run `dotnet test Tests/Emberwright.Core.sln`, plus the Unity tests if `Net`, `Server`, `Client` or `Data` changed and Unity is installed.
+2. Run `dotnet test Tests/Emberwright.Core.sln`, plus the Unity tests if `Net`, `Host`, `Client` or `Data` changed and Unity is installed.
 3. Run `/ponytail-review` (Ponytail plugin) and `/code-review`.
-4. Check the PR against the verification checklist in [docs/AI_WORKFLOW.md](docs/AI_WORKFLOW.md#verification-checklist-claude-code-and-reviewer-local), and against [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for layer and server-authority rules.
+4. Check the PR against the verification checklist in [docs/AI_WORKFLOW.md](docs/AI_WORKFLOW.md#verification-checklist-claude-code-and-reviewer-local), and against [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for layer and host-authority rules.
 5. Report findings with `file:line`, a concrete failure case and the smallest fix. Post them on the PR only when the user asks.
 6. If a finding is a mistake class that Gemma repeats, propose a lesson in `docs/ai/lessons/`, or better, a structural fix (type, analyzer, test).
 

@@ -20,13 +20,13 @@ Gemma 4 is a small model with about 64k tokens of context. A task it can finish 
    1. Core types and tests
    2. Core logic and tests
    3. Data (ScriptableObjects to Core)
-   4. Net (thin, plus an authority test)
+   4. Net and Host (thin, plus an authority test)
    5. Client (view and input)
 4. **Mark dependencies** ("depends on #12"). Tasks that touch separate files may run in any order.
 5. **Rate the difficulty:**
    - `low`: pure Core, with a clear formula.
    - `medium`: crosses one boundary (Data↔Core, Net↔Core).
-   - `high`: concurrency, netcode authority, persistence or Cloud Code.
+   - `high`: concurrency, netcode authority, LAN discovery, or save migrations.
 
 ## Output format (one block per task, which becomes an issue)
 

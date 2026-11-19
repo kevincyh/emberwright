@@ -9,8 +9,9 @@
 
 ## Game security model
 
-- The server is authoritative. Treat every client message as untrusted. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#server-authority).
-- Economy grants go through Cloud Code with request IDs (idempotent).
+- The host is authoritative for the shared world. It treats every client message as untrusted. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#host-authority).
+- Saves are local, so a player can edit their own save. This only affects that player. Checksums catch corruption and casual edits.
+- Discovery broadcasts only on the local network. The host shows its IP address so joining players can check it.
 
 ## Reporting
 
