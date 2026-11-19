@@ -1,0 +1,14 @@
+{
+    "name": "Emberwright.Server",
+    "rootNamespace": "Emberwright.Server",
+    "references": ["Emberwright.Core","Emberwright.Data","Emberwright.Net","Unity.Netcode.Runtime"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

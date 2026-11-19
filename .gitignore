@@ -1,0 +1,66 @@
+# Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/Assets/Plugins/Editor/JetBrains*
+/Assets/AddressableAssetsData/*/*.bin*
+/Assets/StreamingAssets/aa.meta
+/Assets/StreamingAssets/aa/*
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+crashlytics-build.properties
+*.apk
+*.aab
+*.unitypackage
+*.app
+.utmp/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.csproj.user
+*.sln.DotSettings.user
+*.swp
+.DS_Store
+
+# Unity-generated project files (the dotnet test projects under Tests/ are tracked)
+/*.csproj
+/*.sln
+
+# dotnet
+Tests/**/bin/
+Tests/**/obj/
+TestResults/
+*.trx
+coverage/
+
+# Python tooling
+__pycache__/
+.venv/
+*.pyc
+
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.p8
+*.mobileprovision
+*.cer
+google-play-service-account*.json
+fastlane/report.xml
+
+# AI training pairs stay local (see docs/AI_WORKFLOW.md)
+docs/ai/training/*
+!docs/ai/training/README.md
